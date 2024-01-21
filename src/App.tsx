@@ -13,6 +13,7 @@ import {useLibraryStory} from "./hook/useLibraryStory";
 import {CharacterChooser} from "./components/characterChooser";
 import LibraryTab from "./tabs/LibraryTab";
 import GeneratorTab from "./tabs/GeneratorTab";
+import {SettingsTab} from "./tabs/SettingsTab";
 
 function App() {
     const dispatch = useDispatch<AppDispatch>();
@@ -39,7 +40,7 @@ function App() {
     const tabManager: {[key:string]:React.JSX.Element} = {
         Library: <LibraryTab/>,
         Generator: <GeneratorTab/>,
-        Settings: <>Settings</>
+        Settings: <SettingsTab />
     }
 
     return (

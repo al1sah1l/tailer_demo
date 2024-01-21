@@ -7,27 +7,13 @@ import {AppDispatch, RootState} from "../store";
 import {setterApp} from "../store/slices/appSlice";
 import {useLibraryStory} from "../hook/useLibraryStory";
 
-const characterLibrary: CharacterType[] = [
-    {
-        name: "Vasya",
-        species: "cat",
-        trait: "goofy",
-        preferences: "carrots"
-    },
-    {
-        name: "Kolya",
-        species: "dinosaur",
-        trait: "mean",
-        preferences: "swimming"
-    }
-];
-
 export const CharacterChooser = () => {
     const dispatch = useDispatch<AppDispatch>();
     const getLibraryStory = useLibraryStory();
     const currentStory = useSelector<RootState, StoryType>((state) => state.app.currentStory!);
     const currentCharactersNames = useSelector<RootState, string[]>((state) => state.app.currentCharactersNames!);
     const characters = useSelector<RootState, CharacterType[]>((state) => state.app.currentCharacters!);
+    const characterLibrary = useSelector<RootState, CharacterType[]>((state) => state.app.charactersLibrary!);
 
     useEffect(() => {
         getLibraryStory();

@@ -90,7 +90,7 @@ export const RecordButton = () => {
             return;
         }
         const storyCharacters=currentCharacters.map((character) => {
-            return `${character.species} whose name is ${character.name}, who likes ${character.preferences} and is ${character.trait}`;
+            return `${character.species} whose name is ${character.name}, who likes ${character.preferences} and is ${character.traits}`;
             })
 
         const newRequest = `Make the story for kid whose request is ${currentStory.textFromVoice} including these characters: ${storyCharacters.map(value => {return value})}`;
