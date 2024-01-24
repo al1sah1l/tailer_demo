@@ -8,6 +8,7 @@ import {CharacterType, StoryType} from "../types";
 import {CharacterCard} from "../components/characterCard";
 import {Flex} from "antd";
 import { v4 as uuidv4 } from 'uuid';
+import Title from "antd/lib/typography/Title";
 
 export const SettingsTab = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -19,6 +20,7 @@ export const SettingsTab = () => {
 
     return (
     <Flex justify={"center"} gap={20}>
+        <Title level={2}>Customize your characters</Title>
         {charactersLibrary.map((character) => <CharacterCard key={uuidv4()} character={character}/>)}
     </Flex>
   );

@@ -12,6 +12,7 @@ import {useLibraryStory} from "../hook/useLibraryStory";
 import {CharacterType, StoryType} from "../types";
 import {setCurrentStory} from "../store/slices/appSlice";
 import {SendButton} from "../components/sendButton";
+import {v4 as uuidv4} from "uuid";
 
 export default function GeneratorTab() {
     const dispatch = useDispatch<AppDispatch>();

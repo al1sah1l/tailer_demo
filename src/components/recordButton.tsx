@@ -8,6 +8,7 @@ import {AppDispatch, RootState} from "../store";
 import {setCurrentStory} from "../store/slices/appSlice";
 import axios from "axios";
 import {useLibraryStory} from "../hook/useLibraryStory";
+import {v4 as uuidv4} from "uuid";
 
 declare global {
     interface Window {
@@ -30,6 +31,18 @@ export const RecordButton = () => {
     // Function to start recording
     const startRecording = () => {
         setIsRecording(true);
+
+        const clearStory = {
+            id: uuidv4(),
+            textFromVoice: '',
+            name: '',
+            characters: [],
+            charactersNames: [],
+            story: ''
+        }
+
+        dispatch(setCurrentStory(clearStory));
+
         // Create a new SpeechRecognition instance and configure it
         recognitionRef.current = new window.webkitSpeechRecognition();
         recognitionRef.current.continuous = true;
