@@ -1,4 +1,3 @@
-import Configuration, {ClientOptions} from 'openai'
 import OpenAI from 'openai'
 
 const openai = new OpenAI({
@@ -25,11 +24,4 @@ export default async function handler(
         console.log(e);
         return false
     }
-    //console.log('Generated Text:', generatedText);
-
-    // Check if the generated text has at least 1 character
-    /*if (!generatedText || generatedText.length < 1) {
-        console.error('Generated text is empty or too short');
-        return;
-    }*/
 }

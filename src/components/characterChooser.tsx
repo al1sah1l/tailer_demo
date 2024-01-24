@@ -10,9 +10,6 @@ import {useLibraryStory} from "../hook/useLibraryStory";
 export const CharacterChooser = () => {
     const dispatch = useDispatch<AppDispatch>();
     const getLibraryStory = useLibraryStory();
-    const currentStory = useSelector<RootState, StoryType>((state) => state.app.currentStory!);
-    const currentCharactersNames = useSelector<RootState, string[]>((state) => state.app.currentCharactersNames!);
-    const characters = useSelector<RootState, CharacterType[]>((state) => state.app.currentCharacters!);
     const characterLibrary = useSelector<RootState, CharacterType[]>((state) => state.app.charactersLibrary!);
 
     useEffect(() => {

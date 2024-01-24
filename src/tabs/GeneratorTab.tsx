@@ -8,11 +8,9 @@ import {Col, Row} from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store";
-import {useLibraryStory} from "../hook/useLibraryStory";
-import {CharacterType, StoryType} from "../types";
+import {StoryType} from "../types";
 import {setCurrentStory} from "../store/slices/appSlice";
 import {SendButton} from "../components/sendButton";
-import {v4 as uuidv4} from "uuid";
 
 export default function GeneratorTab() {
     const dispatch = useDispatch<AppDispatch>();

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Button, Col, Flex, Input, Row} from "antd";
+import {Button, Col} from "antd";
 import handler from "./openAIChat";
 import {AudioOutlined} from "@ant-design/icons";
 import {CharacterType, StoryType} from "../types";
@@ -8,7 +8,6 @@ import {AppDispatch, RootState} from "../store";
 import {setCurrentStory} from "../store/slices/appSlice";
 import axios from "axios";
 import {useLibraryStory} from "../hook/useLibraryStory";
-import {v4 as uuidv4} from "uuid";
 
 declare global {
     interface Window {
@@ -31,17 +30,6 @@ export const RecordButton = () => {
     // Function to start recording
     const startRecording = () => {
         setIsRecording(true);
-
-        const clearStory = {
-            id: uuidv4(),
-            textFromVoice: '',
-            name: '',
-            characters: [],
-            charactersNames: [],
-            story: ''
-        }
-
-        dispatch(setCurrentStory(clearStory));
 
         // Create a new SpeechRecognition instance and configure it
         recognitionRef.current = new window.webkitSpeechRecognition();
@@ -94,7 +82,6 @@ export const RecordButton = () => {
     };
 
     const onClickSend = async () => {
-        console.log("ddddd");
         if (!currentCharacters){
             return;
         }

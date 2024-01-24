@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import '../App.css';
-import {useLibraryStory} from "../hook/useLibraryStory";
-import {CharacterType, StoryType} from "../types";
-import {Avatar, Button, Flex, Input, Spin} from "antd";
-import axios from "axios";
-import {setCurrentStory, setterApp} from "../store/slices/appSlice";
+import {CharacterType} from "../types";
+import {Avatar, Flex, Input, Spin} from "antd";
+import {setterApp} from "../store/slices/appSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store";
-import {CloseOutlined, UserOutlined} from "@ant-design/icons";
+import {UserOutlined} from "@ant-design/icons";
 import {Select} from "antd/lib";
 
 interface ICharacterCard {
