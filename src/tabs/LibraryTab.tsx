@@ -6,7 +6,7 @@ import {StoryType} from "../types";
 import {Button, Col, Row, Tabs} from "antd";
 import {StoryCard} from "../components/storyCard";
 import Title from "antd/lib/typography/Title";
-import Icon, {CloseOutlined} from "@ant-design/icons";
+import {PlusOutlined} from "@ant-design/icons";
 import {v4 as uuidv4} from "uuid";
 import {setCurrentStory} from "../store/slices/appSlice";
 import {useDispatch} from "react-redux";
@@ -40,7 +40,7 @@ export default function LibraryTab() {
                         return <StoryCard key={story.id} story={story}/>
                     })}
                     <Button onClick={onClickCreateNew}>
-                        <Icon type="plus" />
+                        <PlusOutlined />
                     </Button>
                 </Col>
                 <Col span={18} style={{padding: 20}}>
