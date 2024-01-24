@@ -10,14 +10,12 @@ import { v4 as uuidv4 } from 'uuid';
 import Title from "antd/lib/typography/Title";
 
 export const SettingsTab = () => {
-    const dispatch = useDispatch<AppDispatch>();
     const charactersLibrary = useSelector<RootState, CharacterType[]>((state) => state.app.charactersLibrary!);
-    const [activeTab, setActiveTab] = useState('settings');
 
     return <div>
         <Title level={2}>Customize your characters</Title>
-        (<Flex justify={"center"} gap={20}>
+        <Flex justify={"center"} gap={20}>
             {charactersLibrary.map((character) => <CharacterCard key={uuidv4()} character={character}/>)}
-        </Flex>);
+        </Flex>
     </div>
 }
