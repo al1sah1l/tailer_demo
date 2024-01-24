@@ -15,10 +15,7 @@ import {SendButton} from "../components/sendButton";
 
 export default function GeneratorTab() {
     const dispatch = useDispatch<AppDispatch>();
-    const getLibraryStory = useLibraryStory();
     const currentStory = useSelector<RootState, StoryType>((state) => state.app.currentStory!);
-    const currentCharactersNames = useSelector<RootState, string[]>((state) => state.app.currentCharactersNames!);
-    const currentCharacters = useSelector<RootState, CharacterType[]>((state) => state.app.currentCharacters!);
 
     const onChangeTextRequest = (event: any) => {
         console.log(event.target.value);

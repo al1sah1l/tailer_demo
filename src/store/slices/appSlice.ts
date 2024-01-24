@@ -4,18 +4,32 @@ import { v4 as uuidv4 } from 'uuid';
 
 const characterLibrary: CharacterType[] = [
   {
-    name: "Vasya",
+    name: "Ben",
     species: "cat",
-    traits: ["goofy", "humorous"],
+    traits: ["funny", "brave"],
     preferences: "carrots",
     avatar: 'card1.png'
   },
   {
-    name: "Kolya",
-    species: "dinosaur",
-    traits: ["mean", "sad"],
+    name: "Choco",
+    species: "dog",
+    traits: ["sassy"],
     preferences: "swimming",
     avatar: 'card2.png'
+  },
+  {
+    name: "Ferry",
+    species: "dinosaur",
+    traits: ["mean"],
+    preferences: "ketchup, playground and ice cream",
+    avatar: 'card3.png'
+  },
+  {
+    name: "Emily",
+    species: "turtle",
+    traits: ["bubbly", "witty"],
+    preferences: "pirates and biking",
+    avatar: 'card4.png'
   }
 ];
 
