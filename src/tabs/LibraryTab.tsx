@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../App.css';
 import {useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store";
@@ -6,17 +6,16 @@ import {StoryType} from "../types";
 import {Button, Col, Row, Tabs} from "antd";
 import {StoryCard} from "../components/storyCard";
 import Title from "antd/lib/typography/Title";
-import {CloseOutlined} from "@ant-design/icons";
+import Icon, {CloseOutlined} from "@ant-design/icons";
 import {v4 as uuidv4} from "uuid";
 import {setCurrentStory} from "../store/slices/appSlice";
 import {useDispatch} from "react-redux";
-
-type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
 export default function LibraryTab() {
     const libraryStory = useSelector<RootState, StoryType[]>((state) => state.app.libraryStory!);
     const currentStory = useSelector<RootState, StoryType>((state) => state.app.currentStory!);
     const dispatch = useDispatch<AppDispatch>();
+    const [activeTab, setActiveTab] = useState('library'); // 'library' is the key of your LibraryTab
 
     const onClickCreateNew = () => {
         const newStory: StoryType= {
@@ -28,6 +27,7 @@ export default function LibraryTab() {
             story: ''
         }
         dispatch(setCurrentStory(newStory));
+        setActiveTab('generator');
         // add switching to Generator Tab
     }
 
@@ -40,7 +40,7 @@ export default function LibraryTab() {
                         return <StoryCard key={story.id} story={story}/>
                     })}
                     <Button onClick={onClickCreateNew}>
-                        <CloseOutlined />
+                        <Icon type="plus" />
                     </Button>
                 </Col>
                 <Col span={18} style={{padding: 20}}>

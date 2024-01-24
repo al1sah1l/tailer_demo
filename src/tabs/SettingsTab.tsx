@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../App.css';
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store";
@@ -12,6 +12,7 @@ import Title from "antd/lib/typography/Title";
 export const SettingsTab = () => {
     const dispatch = useDispatch<AppDispatch>();
     const charactersLibrary = useSelector<RootState, CharacterType[]>((state) => state.app.charactersLibrary!);
+    const [activeTab, setActiveTab] = useState('settings');
 
     return <div>
         <Title level={2}>Customize your characters</Title>
