@@ -13,10 +13,10 @@ export const SettingsTab = () => {
     const dispatch = useDispatch<AppDispatch>();
     const charactersLibrary = useSelector<RootState, CharacterType[]>((state) => state.app.charactersLibrary!);
 
-    return (
-    <Flex justify={"center"} gap={20}>
+    return <div>
         <Title level={2}>Customize your characters</Title>
-        {charactersLibrary.map((character) => <CharacterCard key={uuidv4()} character={character}/>)}
-    </Flex>
-  );
+        (<Flex justify={"center"} gap={20}>
+            {charactersLibrary.map((character) => <CharacterCard key={uuidv4()} character={character}/>)}
+        </Flex>);
+    </div>
 }
