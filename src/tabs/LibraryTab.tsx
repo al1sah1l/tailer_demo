@@ -3,7 +3,7 @@ import '../App.css';
 import {useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store";
 import {StoryType} from "../types";
-import {Button, Col, Row, Tabs} from "antd";
+import {Button, Col, Row} from "antd";
 import {StoryCard} from "../components/storyCard";
 import Title from "antd/lib/typography/Title";
 import {PlusOutlined} from "@ant-design/icons";
