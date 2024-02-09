@@ -15,7 +15,6 @@ import {SendButton} from "../components/sendButton";
 export default function GeneratorTab() {
     const dispatch = useDispatch<AppDispatch>();
     const currentStory = useSelector<RootState, StoryType>((state) => state.app.currentStory!);
-    const [activeTab, setActiveTab] = useState('generator');
 
     const onChangeTextRequest = (event: any) => {
         console.log(event.target.value);

@@ -1,4 +1,5 @@
 export type CharacterType = {
+    id: number;
     name: string;
     species: string;
     traits: string[];
@@ -14,3 +15,5 @@ export type StoryType = {
     charactersNames: string[];
     story: string;
 }
+
+export type KeyTabType = 'Generator' | 'Library' | 'Settings';

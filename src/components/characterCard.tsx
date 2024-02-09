@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../App.css';
 import {CharacterType} from "../types";
-import {Avatar, Flex, Input, Spin} from "antd";
+import {Avatar, Button, Flex, Input, Spin} from "antd";
 import {setterApp} from "../store/slices/appSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../store";
@@ -16,19 +16,26 @@ export const CharacterCard: React.FC<ICharacterCard> = ({character}) => {
     const dispatch = useDispatch<AppDispatch>();
     const [spinner, setSpinner] = useState(false);
     const characterLibrary = useSelector<RootState, CharacterType[]>((state) => state.app.charactersLibrary!);
+    const [currentCharacter, setCurrentCharacter] = useState<CharacterType>(character);
 
-    const processCharacter = (value: string, nameParam: string) => {
+    const saveChanges = () => {
         const newCharacterLibrary = characterLibrary.map((subCharacter) => {
-            if (subCharacter.name === character.name){
-                return {
-                    ...subCharacter,
-                    [nameParam]: value,
-                };
+            if (subCharacter.id === currentCharacter.id){
+                return currentCharacter;
             }
             return subCharacter;
         });
 
         dispatch(setterApp({charactersLibrary:newCharacterLibrary}))
+    }
+
+    const processCharacter = (value: string, nameParam: string) => {
+        setCurrentCharacter((oldCurrentCharacter) => {
+            return {
+                ...oldCurrentCharacter,
+                [nameParam]: value
+            }
+        })
     }
 
     const onChangeTraits = (value: string) => {
@@ -56,17 +63,18 @@ export const CharacterCard: React.FC<ICharacterCard> = ({character}) => {
                 gap={10}
                 style={{padding: 10, width: 300, border:'1px solid grey', borderRadius: 10, margin: 5}}>
 
-                <Avatar size={128} icon={<UserOutlined />} src={`./${character.avatar}`} />
-                <Input onChange={onChangeName} placeholder="Name" value={character.name}/>
-                <Input onChange={onChangeSpecies} placeholder="Species" value={character.species}/>
-                <Input onChange={onChangePreferences} placeholder="Preferences" value={character.preferences}/>
+                <Avatar size={128} icon={<UserOutlined />} src={`./${currentCharacter.avatar}`} />
+                <Input onChange={onChangeName} placeholder="Name" value={currentCharacter.name}/>
+                <Input onChange={onChangeSpecies} placeholder="Species" value={currentCharacter.species}/>
+                <Input onChange={onChangePreferences} placeholder="Preferences" value={currentCharacter.preferences}/>
                 <Select
                     mode="tags"
                     style={{ width: '100%' }}
                     placeholder="Traits"
-                    value={character.traits as any}
+                    value={currentCharacter.traits as any}
                     onChange={onChangeTraits}
                 />
+                <Button disabled={JSON.stringify(currentCharacter) === JSON.stringify(character)} onClick={saveChanges}>Save</Button>
             </Flex>
         </Spin>
     );

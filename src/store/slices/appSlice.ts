@@ -1,35 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {CharacterType, StoryType} from "../../types";
+
 import { v4 as uuidv4 } from 'uuid';
+import {CharacterType, StoryType} from "../../types";
 
 const characterLibrary: CharacterType[] = [
   {
-    name: "Ben",
+    id: 1,
+    name: "Vasya",
     species: "cat",
-    traits: ["funny", "brave"],
+    traits: ["goofy", "humorous"],
     preferences: "carrots",
     avatar: 'card1.png'
   },
   {
-    name: "Choco",
-    species: "dog",
-    traits: ["sassy"],
+    id: 2,
+    name: "Kolya",
+    species: "dinosaur",
+    traits: ["mean", "sad"],
     preferences: "swimming",
     avatar: 'card2.png'
-  },
-  {
-    name: "Ferry",
-    species: "dinosaur",
-    traits: ["mean"],
-    preferences: "ketchup, playground and ice cream",
-    avatar: 'card3.png'
-  },
-  {
-    name: "Emily",
-    species: "turtle",
-    traits: ["bubbly", "witty"],
-    preferences: "pirates and biking",
-    avatar: 'card4.png'
   }
 ];
 
@@ -41,15 +30,17 @@ export interface IAppState {
   currentCharactersNames?: string[],
 }
 
+export const defaultStory = () => ({
+  id: uuidv4(),
+  textFromVoice: '',
+  name: '',
+  characters: [],
+  charactersNames: [],
+  story: '',
+})
+
 const initialState: IAppState = {
-  currentStory: {
-    id: uuidv4(),
-    textFromVoice: '',
-    name: '',
-    characters: [],
-    charactersNames: [],
-    story: '',
-  },
+  currentStory: defaultStory(),
   libraryStory: [],
   charactersLibrary: characterLibrary,
   currentCharacters: [],

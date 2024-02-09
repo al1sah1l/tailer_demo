@@ -1,16 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {RecordButton} from "./components/recordButton";
-import Title from "antd/lib/typography/Title";
-import {Cascader, List, Select, Space} from "antd/lib";
-import {Col, Row, Tabs} from "antd";
-import {CharacterType, StoryType} from "./types";
+import {Space} from "antd/lib";
+import {Tabs} from "antd";
+import {CharacterType, KeyTabType, StoryType} from "./types";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "./store";
-import {setCurrentStory, setterApp} from "./store/slices/appSlice";
+import {defaultStory, setCurrentStory} from "./store/slices/appSlice";
 import {useLibraryStory} from "./hook/useLibraryStory";
-import {CharacterChooser} from "./components/characterChooser";
 import LibraryTab from "./tabs/LibraryTab";
 import GeneratorTab from "./tabs/GeneratorTab";
 import {SettingsTab} from "./tabs/SettingsTab";
@@ -33,33 +30,37 @@ function App() {
         getLibraryStory();
     }, []);
 
-    const onClickStory = (item:StoryType) => () => {
-        dispatch(setCurrentStory(item));
-    }
-
-    const tabManager: {[key:string]:React.JSX.Element} = {
+    const tabManager: {[key in KeyTabType]:React.JSX.Element} = {
         Library: <LibraryTab/>,
         Generator: <GeneratorTab/>,
         Settings: <SettingsTab />
     }
 
+    const onChangeTab = (keyTab: string) => {
+        const newKeyTab  = keyTab as KeyTabType;
+        if (newKeyTab === "Generator"){
+            dispatch(setCurrentStory(defaultStory()));
+        }
+    }
+
     return (
-    <div className="App">
-        <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-            <Tabs
-                type="card"
-                centered
-                items={Object.keys(tabManager).map((tabName) => {
-                    return {
-                        label: `${tabName}`,
-                        key: tabName,
-                        children: tabManager[tabName],
-                    };
-                })}
-            />
-        </Space>
-    </div>
-  );
+        <div className="App">
+            <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+                <Tabs
+                    type="card"
+                    centered
+                    onChange={onChangeTab}
+                    items={(Object.keys(tabManager) as  KeyTabType[]).map((tabName) => {
+                        return {
+                            label: `${tabName}`,
+                            key: tabName,
+                            children: tabManager[tabName],
+                        };
+                    })}
+                />
+            </Space>
+        </div>
+    );
 }
 
 export default App;
