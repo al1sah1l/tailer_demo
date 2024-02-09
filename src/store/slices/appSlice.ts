@@ -6,7 +6,7 @@ import {CharacterType, StoryType} from "../../types";
 const characterLibrary: CharacterType[] = [
   {
     id: 1,
-    name: "Vasya",
+    name: "Ben",
     species: "cat",
     traits: ["goofy", "humorous"],
     preferences: "carrots",
@@ -14,11 +14,27 @@ const characterLibrary: CharacterType[] = [
   },
   {
     id: 2,
-    name: "Kolya",
-    species: "dinosaur",
+    name: "Oliver",
+    species: "dog",
     traits: ["mean", "sad"],
     preferences: "swimming",
     avatar: 'card2.png'
+  },
+  {
+    id: 3,
+    name: "Emily",
+    species: "kangaroo",
+    traits: ["happy", "cheerful"],
+    preferences: "playing video games",
+    avatar: 'card3.png'
+  },
+  {
+    id: 4,
+    name: "George",
+    species: "dinosaur",
+    traits: ["mysterious"],
+    preferences: "school friends",
+    avatar: 'card4.png'
   }
 ];
 
